@@ -1,0 +1,31 @@
+<style type="text/css">
+.unread {
+    background: lightblue;
+}
+
+.item.positive {
+    border-color: #0c60ee;
+    background-color: #387ef5;
+    color: #fff;
+}
+</style>
+<ion-view title="Messages">
+    <ion-nav-bar class="bar bar-positive" title="Messages">
+        <ion-nav-buttons side="left">
+            <button class="button button-clear ion-ios-arrow-back" ng-click="modals.messagesModal.remove()"> </button>
+        </ion-nav-buttons>
+        <h1 class="title light">Messages</h1>
+    </ion-nav-bar>
+    <ion-content padding="true">
+        <ion-scroll zooming="true" direction="y" style="height: 100vh; margin-top: 15%;">
+            <ion-list style="margin-top: 15%;">
+                <div class="item item-icon-left" ng-repeat="message in messages | orderBy:'date':true" ng-click="viewMessage(message)" ng-class="{'positive':message.opened==null}">
+                    <i class="icon" ng-class="[{'ion-ios-email':message.opened==null},{'ion-ios-email-outline':message.opened!=null}]"></i>
+                    <small ng-bind="message.date | date:'medium'"></small>
+                    <h2 ng-bind="message.name"></h2>
+                    <p ng-bind="message.message"></p>
+                </div>
+            </ion-list>
+        </ion-scroll>
+    </ion-content>
+</ion-view>

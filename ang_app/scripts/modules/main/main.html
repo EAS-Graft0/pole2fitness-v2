@@ -1,0 +1,71 @@
+<div title="Main">
+    <div class="container posts-container">
+        <div class="card mb-3 new-post">
+            <div class="card-header">New Post</div>
+            <div class="card-body text-secondary">
+                <!-- <h5 class="card-title">Secondary card title</h5> -->
+                <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+                <div class="input-group">
+                    <textarea class="form-control" aria-label="With textarea" placeholder="Write your post here..."></textarea>
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-camera"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="btn btn-primary pull-right">Post</div>
+        </div>
+        <div class="post-feed">
+            <!--  -->
+            <div class="card post" ng-repeat="post in posts">
+                <img class="card-img-top" src="" alt="Card image cap" ng-if="post.image">
+                <div class="card-body">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1" ng-bind="post.name"></h5>
+                        <small ng-bind="post.date | date:'medium'" class="text-muted"></small>
+                    </div>
+                    <p class="card-text" ng-bind="post.post"></p>
+                </div>
+                <div class="card-footer">
+                    <div class="row">
+                        <!-- <div class="col"><small class="text-muted" ng-bind="post.date | date:'medium'"></small> </div> -->
+                        <div class="col"><small ng-click="showComments(post)" data-toggle="modal" data-target="#commentsModal">Comments: <span class="badge badge-primary badge-pill" ng-bind="post.comments.length"></span> </small></div>
+                        <!-- Modal -->
+                        <div class="modal fade" id="commentsModal" tabindex="-1" role="dialog" aria-labelledby="commentsModalTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="commentsModalLongTitle" ng-bind="post.name"></h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p ng-bind="post.post"></p>
+                                        <!--  -->
+                                        <div class="input-group mb-3">
+                                            <input type="text" class="form-control" name="name" placeholder="Name" aria-label="Name" aria-describedby="send" ng-model="comment.name">
+                                            <input type="text" class="form-control" name="comment" placeholder="Reply" aria-label="Comment" aria-describedby="send" ng-model="comment.comment">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text btn btn-primary" ng-click="newComment(comment)" id="send">Send</span>
+                                            </div>
+                                        </div>
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item" ng-repeat="comment in post.comments">
+                                                <h4 ng-bind="comment.name"></h4>
+                                                <p ng-bind="comment.comment"></p>
+                                                <small ng-bind="comment.date | date:'medium'"></small>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Modal -->
+                        <!-- <div class="col text-right"><small>Comments: <span ng-click="viewPost(post)">{{post.comments.length}}</span></small></div> -->
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+</div>

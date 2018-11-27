@@ -1,0 +1,20 @@
+.posts-container {
+    /*background: white;*/
+    width: 35rem;
+}
+
+.new-post {
+    margin-top: 2rem;
+}
+
+.post {
+    margin-top: 2rem;
+}
+
+[ng-click] {
+    cursor: pointer;
+}
+
+span[ng-click] {
+    color: blue;
+}

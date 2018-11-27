@@ -1,0 +1,20 @@
+a.column {
+  float: left;
+  width: 33.33%;
+  padding: 15px;
+}
+
+/* CSS for view checkout  Start all of your class names for this view with checkout*/
+/* CSS for view bodyProfile  Start all of your class names for this view with bodyProfile*/
+/* CSS for view contact  Start all of your class names for this view with contact*/
+/* CSS for view menu  Start all of your class names for this view with menu*/
+/* CSS for view customGuide  Start all of your class names for this view with customGuide*/
+/* CSS for view plans  Start all of your class names for this view with plans*/
+
+.unread{
+  background: lightblue;
+}
+
+    .tab-item i{
+        color: #387ef5;
+    }

@@ -1,0 +1,18 @@
+
+
+.photoContainer {
+	max-width: 10rem;
+	max-height: 10rem;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.photo {
+	width: 10rem;
+	height: 10rem;
+	transition: 0.5s;
+}
+
+.photo:hover {
+	transform: scale(1.2);
+}

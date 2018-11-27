@@ -1,0 +1,16 @@
+<ion-view title="Terms & Conditions">
+    <ion-nav-bar class="bar bar-positive">
+        <ion-nav-back-button> <button class="button button-icon icon ion-ios-arrow-back" ng-click="modals.termsModal.remove()"></button> </ion-nav-back-button>
+    </ion-nav-bar>
+    <ion-content padding="true" class="has-header">
+        <ion-scroll zooming="true" direction="y" style="height: 100vh;">
+            <div class="text-center padding">
+                <p>I hereby declare that I have read the Pole2Fitness participation policy and agree that I know of no modicual, physiological reason why I should not be enrolled as a student at Pole2Fitness.</p>
+                <p>I hereby declare that I will follow all instructions from my Pole2Fitness instructor and will not do anything to bring harm or risk to another individual or instructor as a result of my failure to observe such instruction.</p>
+                <p>I am fully aware that I will be taking part in Pole2Fitness activities at my own risk.</p>
+                <p>I have provided my medical history that is true and accurate at this point and fully agree to reveal to Pole2Fitness and/or my instructor any alteration in my physical or psychological condition and acknowledge that instructions with Pole2Fitness can be terminated at any time at the absolute discretion of Pole2Fitness and/or it's duty authorize instructor.</p>
+            </div>
+            <ion-checkbox required ng-click="modals.termsModal.remove()">I Agree</ion-checkbox>
+        </ion-scroll>
+    </ion-content>
+</ion-view>

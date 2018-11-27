@@ -1,0 +1,65 @@
+<html>
+
+<head>
+    <base href="/">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>AT</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.css">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+    <script defer src="https://use.fontawesome.com/releases/v5.1.1/js/all.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+
+<body ng-app="ang-app" class="" s="bg-body" style="background: #e6ecf0;">
+    <!--  class="bg-body" -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary" ng-controller="headerCtrl">
+        <a class="navbar-brand" href="#">Pole2Fitness</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item" ng-class="{'active':isActive('/main')}">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" ng-class="{'active':isActive('/about')}" href="/#!/about">About</a>
+                </li>
+                <li class="nav-item" ng-class="{'active':isActive('/classes')}">
+                    <a class="nav-link" href="/#!/classes">Classes</a>
+                </li>
+                <li class="nav-item" ng-class="{'active':isActive('/gallery')}">
+                    <a class="nav-link" href="/#!/gallery">Gallery</a>
+                </li>
+                <li class="nav-item" ng-class="{'active':isActive('/location')}">
+                    <a class="nav-link" href="/#!/location">Location</a>
+                </li>
+                <!-- <li class="nav-item" ng-class="{'active':isActive('/contact')}">
+                    <a class="nav-link" href="/#!/contact">Contact</a>
+                </li> -->
+            </ul>
+            <!-- <span class="navbar-text" ng-if="notifications"> Navbar text with an inline element </span> -->
+    </nav>
+    <div ng-view="" class="col"></div>
+    <!-- inject:js -->
+    <script src="/bower_components/angular/angular.min.js"></script>
+    <script src="/bower_components/angular-route/angular-route.min.js"></script>
+    <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <!-- endinject -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/scripts.js"></script>
+    <script src="scripts/templates.js"></script>
+    <!-- bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <!--  -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJrgqQG0u97TzOClmvTxGhZ5BdJDxILbc"></script>
+</body>
+
+</html>

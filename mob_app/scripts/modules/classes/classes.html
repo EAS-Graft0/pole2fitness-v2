@@ -1,0 +1,26 @@
+<ion-view title="Classes">
+    <ion-nav-bar class="bar bar-positive">
+        <!-- <h2 class="title">Classes</h2> -->
+    </ion-nav-bar>
+    <ion-content padding="false" class="has-header" has-header>
+        <ion-scroll zooming="true" direction="y" style="height: 100vh;">
+            <ion-list>
+                <ion-radio ng-click="select(class)" class="item item-icon-right" ng-repeat="class in classes">
+                    <h3>{{class.name}} <span class="icon"> <i class="ion-star" ng-class="[{'balanced':class.difficulty==1},{'energized':class.difficulty==2},{'assertive':class.difficulty==3}]" ng-repeat="i in getNumber(class.difficulty) track by $index"></i> </span> </h3>
+                    <small ng-bind="class.day"></small>
+                    <small ng-bind="class.time | date:'shortTime'"></small>
+                </ion-radio>
+                <div ng-if="selectedClass">
+                    <div class="item item-divider" ng-bind="selectedClass.name"> </div>
+                    <div class="item item-text-wrap" ng-bind="selectedClass.description"> </div>
+                    <button ng-click="showDetails(class)" class="button button-full button-positive"> Continue </button>
+                </div>
+            </ion-list>
+        </ion-scroll>
+    </ion-content>
+    <style type="text/css">
+    i.radio-icon.ion-checkmark:before {
+        content: '';
+    }
+    </style>
+</ion-view>

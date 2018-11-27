@@ -1,0 +1,50 @@
+<ion-view title="Posts">
+    <ion-nav-bar class="bar bar-positive" title="Posts">
+        <!-- <h2 class="title">Home</h2> -->
+        <ion-nav-buttons side="left">
+            <button class="button button-icon icon ion-ios-arrow-back" ng-click="modals.postModal.remove()"> </button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content padding="false" has-header="false">
+        <ion-scroll zooming="true" direction="y" style="height: 100vh; margin-top: 15%;">
+            <div class="list card">
+                <div class="item item-avatar">
+                    <img ng-src="img/pf.png" style="border-radius: 0;">
+                    <h2 ng-bind="post.name"></h2>
+                </div>
+                <div class="item item-body item-icon-right">
+                    <img ng-if="post.image" class="full-image" ng-src="{{post.image}}">
+                    <p ng-bind="post.post">
+                    </p>
+                    <p ng-bind="post.date | date:'medium'"></p>
+                    <p ng-bind="'Comments: ' + post.comments.length"></p>
+                </div>
+                <div class="item item-icon-right" ng-click="replying=true">
+                    <h3>Reply</h3>
+                    <i class="icon ion-reply"></i>
+                </div>
+                <div class="item" ng-if="replying==true">
+                    <!-- ng-if="replying==true" -->
+                    <form name="replyForm">
+                        <label class="item item-input item-floating-label">
+                            <!-- <span class="input-label"></span> -->
+                            <input type="text" name="name" placeholder="Name..." ng-model="name" required>
+                        </label>
+                        <label class="item item-input item-floating-label">
+                            <!-- <span class="input-label"></span> -->
+                            <input type="text" name="reply" placeholder="Write a comment..." ng-model="reply" required>
+                        </label>
+                        <button class="button button-full button-positive" ng-click="newComment(name, reply, post.id)" ng-if="!replyForm.$error.required">Post</button>
+                </div>
+                </form>
+                <small ng-bind="messageResponse"></small>
+            </div>
+            <div class="list">
+                <div class="item" ng-repeat="comment in post.comments">
+                    <h4 ng-bind=comment.name></h4>
+                    <p ng-bind="comment.comment"></p>
+                </div>
+            </div>
+        </ion-scroll>
+    </ion-content>
+</ion-view>

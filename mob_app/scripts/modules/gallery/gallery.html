@@ -1,0 +1,14 @@
+<ion-view title="Gallery">
+    <ion-nav-bar class="bar bar-positive">
+        <!-- <h2 class="title">Gallery</h2> -->
+    </ion-nav-bar>
+    <ion-content padding="false">
+        <ion-scroll zooming="true" direction="x" style="height: 100vh;">
+            <ion-slides options="options" slider="data.slider">
+                <ion-slide-page ng-repeat="image in images">
+                    <img ng-src="img/{{image}}">
+                </ion-slide-page>
+            </ion-slides>
+        </ion-scroll>
+    </ion-content>
+</ion-view>

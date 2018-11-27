@@ -1,0 +1,25 @@
+<ion-view title="Contact">
+    <ion-nav-bar class="bar bar-positive" title="Contact">
+        <ion-nav-buttons side="left">
+            <button class="button button-clear ion-ios-arrow-back" ng-click="modals.contactModal.remove()"> </button>
+        </ion-nav-buttons>
+        <h1 class="title">Contact</h1>
+    </ion-nav-bar>
+    <ion-content padding="false">
+        <ion-scroll zooming="true" direction="y" style="height: 100vh; margin-top: 15%;">
+            <div class="list">  
+                <label class="item item-input">
+                    <input type="text" name="name" placeholder="Name" ng-model="name">
+                </label>
+                <label class="item item-input">
+                    <input type="text" name="email" placeholder="Email" ng-model="email">
+                </label>
+                <label class="item item-input">
+                    <textarea placeholder="Message" name="message" ng-model="message"></textarea>
+                </label>
+                <button ng-if="!messageResponse" class="button button-block button-positive" ng-click="sendMessage(name, email, message)"> Send </button>
+                <small ng-bind="messageResponse"></small>
+            </div>
+        </ion-scroll>
+    </ion-content>
+</ion-view>

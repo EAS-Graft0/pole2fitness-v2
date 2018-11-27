@@ -1,0 +1,30 @@
+<ion-view title="Home">
+    <ion-nav-bar class="bar bar-positive" title="Home">
+        <!-- <h2 class="title">Home</h2> -->
+        <ion-nav-buttons side="right">
+            <button class="button button-clear ion-paper-airplane" ng-click="showContact()"> </button>
+        </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-content padding="false" has-header="false">
+        <ion-scroll zooming="true" direction="y" style="height: 100vh; margin-top: 15%;">
+            <div class="list card" ng-repeat="post in posts | orderBy:'date':true">
+                <div class="item item-avatar">
+                    <img ng-src="img/pf.png" style="border-radius: 0;">
+                    <h2 ng-bind="post.name"></h2>
+                    <p ng-bind="post.date | date:'medium'"></p>
+                </div>
+                <div class="item item-body">
+                    <img ng-if="post.image" class="full-image" ng-src="{{post.image}}">
+                    <p ng-bind="post.post"> </p>
+                    <p ng-click="viewPost(post)"> Comments: <a ng-bind="post.comments.length"></a> <i class="icon ion-ios-chatbubble"></i></p>
+                </div>
+            </div>
+        </ion-scroll>
+    </ion-content>
+    <style type="text/css">
+    ion-content {
+        background: #e6ecf0;
+        top: 0 !important;
+    }
+    </style>
+</ion-view>

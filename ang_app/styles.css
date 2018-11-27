@@ -1,0 +1,50 @@
+.container {
+  padding: 1rem;
+}
+.container {
+  background: white;
+}
+
+.success {
+  color: green;
+}
+.full-height {
+  height: 100vh;
+}
+.photoContainer {
+  max-width: 10rem;
+  max-height: 10rem;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.photo {
+  width: 10rem;
+  height: 10rem;
+  transition: 0.5s;
+}
+
+.photo:hover {
+  transform: scale(1.2);
+}
+/* CSS for view location  Start all of your class names for this view with location*/
+.posts-container {
+  /*background: white;*/
+  width: 35rem;
+}
+
+.new-post {
+  margin-top: 2rem;
+}
+
+.post {
+  margin-top: 2rem;
+}
+
+[ng-click] {
+  cursor: pointer;
+}
+
+span[ng-click] {
+  color: blue;
+}

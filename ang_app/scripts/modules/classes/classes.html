@@ -1,0 +1,70 @@
+<div title="classes" class="container">
+    <div class="text-center">
+        <h2>Classes</h2>
+        <b> *Classes will only be run providing there are a minimum of 5 people booked on to that class.* </b>
+        <div> £30 for a block of 5 weeks. </div>
+        <!--  -->
+        <br>
+        <small>Choose a Class</small>
+        <div class="card-deck">
+            <div class="card" ng-click="selectClass(class)" ng-repeat="class in classes" ng-class="{'border-primary':selectedClass.id==$index+1}">
+                <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+                <div class="card-header">
+                    <h6 class="card-title" ng-bind="class.name"></h6>
+                    <small ng-bind="class.day + ' - ' + class.time"></small>
+                </div>
+                <div class="card-body">
+                    <!-- <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p> -->
+                    <p class="card-text"><small class="text-muted">Difficulty</small></p>
+                    <span class="fas fa-star" ng-class="[{'text-success':class.difficulty==1},{'text-warning':class.difficulty==2},{'text-danger':class.difficulty==3}]" ng-repeat="i in getNumber(class.difficulty) track by $index"></span>
+                </div>
+            </div>
+        </div>
+        <div ng-if="selectedClass">
+            <h3>{{selectedClass.name}}</h3>
+            <div>
+                <p ng-bind="selectedClass.description"></p>
+                <div class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#bookingModalCenter">Book</div>
+            </div>
+            <!-- MODAL -->
+            <div class="modal fade" id="bookingModalCenter" tabindex="-1" role="dialog" aria-labelledby="bookingModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="bookingModalLongTitle">Book on to {{selectedClass.name}}</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p ng-bind="post.post"></p>
+                            <!--  -->
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" name="name" placeholder="Name" aria-label="Name" aria-describedby="book" ng-model="booking.name">
+                                <input type="text" class="form-control" name="email" placeholder="Email" aria-label="Email" aria-describedby="book" ng-model="booking.email">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" ng-click="book(booking)" id="book">Book</button>
+                        </div>
+                        <small class="text-info" ng-bind="messageResponse"></small>
+                    </div>
+                </div>
+            </div>
+            <!-- MODAL -->
+            <br>
+            <div class="row">
+                <ul class="list-group col">
+                    <li class="list-group-item list-group-item-primary">Schedule</li>
+                    <li class="list-group-item" ng-repeat="lesson in schedule" ng-bind="lesson.date | date:'medium'"></li>
+                </ul>
+                <ul class="list-group col">
+                    <li class="list-group-item list-group-item-primary">Atendees <span class="badge badge-primary badge-pill" ng-bind="attendees.length"></span></li>
+                    <li class="list-group-item" ng-repeat="attendee in attendees" ng-bind="attendee.name"></li>
+                </ul>
+            </div>
+        </div>
+        <!--  -->
+    </div>
+</div>

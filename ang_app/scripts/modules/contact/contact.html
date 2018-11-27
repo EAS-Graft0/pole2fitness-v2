@@ -1,0 +1,26 @@
+<div title="contact">
+    <div class="container full-height">
+        <div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Name</span>
+                </div>
+                <input type="text" class="form-control" name="name" placeholder="Name" aria-label="Name" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Email</span>
+                </div>
+                <input type="email" class="form-control" name="email" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1">
+            </div>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Query</span>
+                </div>
+                <textarea class="form-control" aria-label="Leave us a message" placeholder="Leave us a message..."></textarea>
+            </div>
+            <div class="btn btn-primary btn-lg btn-block" ng-click="">Send</div>
+            <small ng-bind="messageResponse"></small>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, user-scalable=yes, width=device-width">
+    <title></title>
+    <link href="css/ionic.app.css" rel="stylesheet">
+    <link rel="stylesheet" href="lib/angular-ui-swiper/angular-ui-swiper.css">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/compiled.styles.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,600i,700,700i,800,900,400i,300i">
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/ionicuirouter/ionicUIRouter.js"></script>
+    <!-- cordova script (this will be a 404 during development) -->
+    <!-- your app's js -->
+    <script src="scripts/ionic.native.min.js"></script>
+    <script src="lib/angular-payments/lib/angular-payments.min.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="lib/angular-ui-swiper/angular-ui-swiper.js"></script>
+    <script src="scripts/scripts.js"></script>
+    <script src="scripts/templates.js"></script>
+</head>
+
+<body ng-app="mobApp">
+    <style type="text/css">
+
+    .tab-item i {
+        color: #387ef5;
+    }
+    </style>
+    <ion-nav-view></ion-nav-view>
+    <!-- <div class="bar bar-footer"> -->
+    <ion-tabs class="tabs-icon-top" style="">
+        <ion-tab title="Home" icon-on="ion-ios-home" icon-off="ion-ios-home-outline" ui-sref="home"> </ion-tab>
+        <ion-tab title="Classes" icon-on="ion-ios-calendar" icon-off="ion-ios-calendar-outline" ui-sref="classes"> </ion-tab>
+        <!-- <ion-tab title="Location" icon-on="ion-ios-location" icon-off="ion-ios-location-outline" ui-sref="location"> </ion-tab> -->
+        <ion-tab title="Gallery" icon-on="ion-images" icon-off="ion-image" ui-sref="gallery"> </ion-tab>
+    </ion-tabs>
+    <!-- </div> -->
+</body>
+
+</html>

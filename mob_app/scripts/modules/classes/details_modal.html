@@ -1,0 +1,36 @@
+<ion-view title="Details">
+    <ion-nav-bar class="bar bar-positive">
+        <ion-nav-back-button> <button class="button button-icon icon ion-ios-arrow-back" ng-click="modals.detailsModal.remove()"></button> </ion-nav-back-button>
+    </ion-nav-bar>
+    <ion-content padding="false" class="has-header">
+        <ion-scroll zooming="true" direction="y" style="height: 100vh;">
+            <h4>Booking onto {{selectedClass.name}}</h4>
+            <div class="list">
+                <form name="details">
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label">Name</span>
+                        <input type="text" name="name" placeholder="Name *" ng-model="name" required>
+                    </label>
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label">Email</span>
+                        <input type="email" name="email" placeholder="Email *" ng-model="email" required>
+                    </label>
+                     <label class="item" ng-click="showTerms()" ng-if="!disclaimer">
+                        <span>Please read <a>Terms & Conditions</a></span>
+                    </label>
+                    <span class="assertive" ng-show="details.$error.email">Not a valid email.</span>
+                    <span class="assertive" ng-show="details.$error.required">Please fill in required fields*.</span>
+                    <!-- <ion-checkbox ng-model="disclaimer" required ng-click="showTerms()">I agree to the <a>Terms & Conditions</a></ion-checkbox> -->
+                    <ion-checkbox ng-disabled="disclaimer==true" ng-if="disclaimer==true" ng-checked="disclaimer=true">Terms & Conditions</ion-checkbox>
+                </form>
+                <button ng-if="!details.$error.email && !details.$error.required && !booking && booking!='success' && disclaimer==true" ng-click="bookClass(selectedClass.id, name, email)" class="button button-full button-positive"> Book </button>
+            </div>
+            <div class="card" ng-if="booking=='success'">
+                <div class="item">
+                    <h2>You've successfully booked onto {{selectedClass.name}}</h2>
+                    <button class="button button-full button-positive" ng-click="modals.detailsModal.remove()">Go Back</button>
+                </div>
+            </div>
+        </ion-scroll>
+    </ion-content>
+</ion-view>
