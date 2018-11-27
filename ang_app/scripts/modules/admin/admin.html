@@ -1,0 +1,31 @@
+<div title="admin">
+    <div class="container posts-container">
+        <h3 class="text-center">Admin</h3>
+        <div class="card mb-3 new-post">
+            <div class="card-header">New Post</div>
+            <div class="card-body text-secondary">
+                <div class="form-group">
+                    <input type="text" class="form-control" aria-label="Name" name="name" placeholder="Name" ng-model="post.name">
+                </div>
+                <div class="input-group">
+                    <textarea class="form-control" aria-label="Post" placeholder="Write your post here..." ng-model="post.post"></textarea>
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-camera"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="btn btn-primary pull-right" ng-click="newPost(post)">Post</div>
+            <small ng-bind="messageResponse"></small>
+        </div>
+        <div class="card mb-3 new-post">
+            <div class="card-header">New Block</div>
+            <div class="card-body text-secondary">
+                <div class="form-group">
+                    <label>Pick a new date</label>
+                    <input type="date" name="date" class="form-control" ng-model="date">
+                </div>
+            </div>
+            <div class="btn btn-primary pull-right" ng-click="startNewBlock(date)">Start New Block</div>
+            <small ng-bind="messageResponse"></small>
+        </div>
+    </div>

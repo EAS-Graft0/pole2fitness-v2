@@ -1,5 +1,14 @@
-.container {
-  padding: 1rem;
+.posts-container {
+  /*background: white;*/
+  width: 35rem;
+}
+
+.new-post {
+  margin-top: 2rem;
+}
+
+[ng-click] {
+  cursor: pointer;
 }
 .container {
   background: white;
@@ -8,8 +17,15 @@
 .success {
   color: green;
 }
+
+.classes-container {
+  height: 100vh;
+}
 .full-height {
   height: 100vh;
+}
+.container {
+  padding: 1rem;
 }
 .photoContainer {
   max-width: 10rem;

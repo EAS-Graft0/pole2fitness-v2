@@ -2,7 +2,10 @@
     background: white;
 }
 
-
 .success {
     color: green;
+}
+
+.classes-container {
+    height: 100vh;
 }
