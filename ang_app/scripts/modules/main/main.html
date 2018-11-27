@@ -20,13 +20,13 @@
                             <div class="modal-dialog modal-dialog-centered" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="commentsModalLongTitle" ng-bind="post.name"></h5>
+                                        <h5 class="modal-title" id="commentsModalLongTitle" ng-bind="selectedPost.name"></h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <p ng-bind="post.post"></p>
+                                        <p ng-bind="selectedPost.post"></p>
                                         <!--  -->
                                         <div class="input-group mb-3">
                                             <input type="text" class="form-control" name="name" placeholder="Name" aria-label="Name" aria-describedby="send" ng-model="comment.name">
@@ -36,7 +36,7 @@
                                             </div>
                                         </div>
                                         <ul class="list-group list-group-flush">
-                                            <li class="list-group-item" ng-repeat="comment in post.comments">
+                                            <li class="list-group-item" ng-repeat="comment in selectedPost.comments">
                                                 <h4 ng-bind="comment.name"></h4>
                                                 <p ng-bind="comment.comment"></p>
                                                 <small ng-bind="comment.date | date:'medium'"></small>

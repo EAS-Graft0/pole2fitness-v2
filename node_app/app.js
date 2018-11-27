@@ -8,35 +8,77 @@ var app = express();
 // Set global Express headers
 var ua;
 
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    // ua = req.header('user-agent');
-    // console.log(ua)
+// app.use(function(req, res, next) {
+//     res.header("Access-Control-Allow-Origin", "*");
+//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//     // ua = req.header('user-agent');
+//     // console.log(ua)
+//     // 
+//     ua = req.header('user-agent');
+//     if (/mobile|iphone|ipod|android|blackberry|opera|mini|windows\sce|palm|smartphone|iemobile|ipad|android|android 3.0|xoom|sch-i800|playbook|tablet|kindle/i.test(ua)) {
+//         console.log('mobile')
+//         app.use(express.static('../mob_app'));
+//         next();
+//     } else {
+//         console.log('desktop')
+//         app.use(express.static('../ang_app'));
+//         next();
+//     }
+//     // 
 
-    next();
-});
+// });
 
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({
-    extended: true
-}));
+// app.use(bodyParser.json())
+// app.use(bodyParser.urlencoded({
+//     extended: true
+// }));
+
+// function checkMobile() {
+//     app.use(function(req, res, next) {
+//         res.header("Access-Control-Allow-Origin", "*");
+//         res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//         // ua = req.header('user-agent');
+//         // console.log(ua)
+//         // 
+//         ua = req.header('user-agent');
+//         if (/mobile|iphone|ipod|android|blackberry|opera|mini|windows\sce|palm|smartphone|iemobile|ipad|android|android 3.0|xoom|sch-i800|playbook|tablet|kindle/i.test(ua)) {
+//             console.log('mobile')
+//             app.use(express.static('../mob_app'));
+//             next();
+//         } else {
+//             console.log('desktop')
+//             app.use(express.static('../ang_app'));
+//             next();
+//         }
+//         // 
+//     });
+// }
 
 
-app.get('*', (req, res, next) => {
-    ua = req.header('user-agent');
-    if (/mobile|iphone|ipod|android|blackberry|opera|mini|windows\sce|palm|smartphone|iemobile|ipad|android|android 3.0|xoom|sch-i800|playbook|tablet|kindle/i.test(ua)) {
-        // console.log(/mobile|iphone|ipod|android|blackberry|opera|mini|windows\sce|palm|smartphone|iemobile|ipad|android|android 3.0|xoom|sch-i800|playbook|tablet|kindle/i.test(ua))
-        console.log('mobile')
-        app.use(express.static('../mob_app'));
-        next();
-    } else {
-        // console.log(/mobile|iphone|ipod|android|blackberry|opera|mini|windows\sce|palm|smartphone|iemobile|ipad|android|android 3.0|xoom|sch-i800|playbook|tablet|kindle/i.test(ua))
-        console.log('desktop')
-        app.use(express.static('../ang_app'));
-        next();
-    }
-})
+// app.get('/', (req, res, next) => {
+//     ua = req.header('user-agent');
+//     if (/mobile|iphone|ipod|android|blackberry|opera|mini|windows\sce|palm|smartphone|iemobile|ipad|android|android 3.0|xoom|sch-i800|playbook|tablet|kindle/i.test(ua)) {
+//         console.log('mobile')
+//         // app.use(express.static('../mob_app'));
+//         next();
+//     } else {
+//         console.log('desktop')
+//         app.use(express.static('../ang_app'));
+//         next();
+//     }
+// })
+// app.get('*', (req, res, next) => {
+//     ua = req.header('user-agent');
+//     if (/mobile|iphone|ipod|android|blackberry|opera|mini|windows\sce|palm|smartphone|iemobile|ipad|android|android 3.0|xoom|sch-i800|playbook|tablet|kindle/i.test(ua)) {
+//         console.log('mobile')
+//         // app.use(express.static('../mob_app'));
+//         next();
+//     } else {
+//         console.log('desktop')
+//         app.use(express.static('../ang_app'));
+//         next();
+//     }
+// })
 
 
 // Serve static files from angular app dist folder
@@ -77,5 +119,19 @@ fs.readdirSync(path.join(__dirname, 'routes')).forEach(function(file) {
 /*MOB APP*/
 
 // Start listening
-app.listen(80);
+app.listen(80, () => {
+    app.use(function(req, res, next) {
+        res.header("Access-Control-Allow-Origin", "*");
+        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+        ua = req.header('user-agent');
+        if (/mobile|iphone|ipod|android|blackberry|opera|mini|windows\sce|palm|smartphone|iemobile|ipad|android|android 3.0|xoom|sch-i800|playbook|tablet|kindle/i.test(ua)) {
+            console.log('mobile')
+            app.use(express.static('../mob_app'));
+        } else {
+            console.log('desktop')
+            app.use(express.static('../ang_app'));
+        }
+        next();
+    });
+});
 console.log('app listening on port: 80');

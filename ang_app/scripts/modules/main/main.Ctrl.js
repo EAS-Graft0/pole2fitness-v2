@@ -23,11 +23,11 @@ angular.module('ang-app').controller('mainCtrl', ['$scope', '$http', 'DataSvc', 
     };
 
     $scope.showComments = (post) => {
-        $scope.post = post;
+        $scope.selectedPost = post;
     };
 
     $scope.newComment = (comment) => {
-        comment.post_id = $scope.post.id;
+        comment.post_id = $scope.selectedPost.id;
         DataSvc.comment(comment).then((res) => {
             $scope.messageResponse = res;
             $timeout(() => {

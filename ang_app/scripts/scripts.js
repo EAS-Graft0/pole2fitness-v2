@@ -8,78 +8,6 @@ angular.module("ang-app").config(["$routeProvider", function(routeProv) {
         controller: "aboutCtrl"
     })
 }])
-angular.module('ang-app').controller('classesCtrl', ['$scope', '$http', 'DataSvc', '$timeout', function($scope, $http, DataSvc, $timeout) {
-    window.classesCtrlScope = $scope
-
-    DataSvc.getClasses().then((classes) => {
-        $scope.classes = classes;
-    });
-
-    $scope.getNumber = (number) => {
-        return new Array(number);
-    };
-
-
-    $scope.selectClass = (lesson) => {
-        $scope.selectedClass = lesson;
-        DataSvc.getClassSchedule(lesson.id).then((schedule) => {
-            $scope.schedule = schedule;
-            DataSvc.getClassInfo(lesson.id).then((attendees) => {
-                $scope.attendees = attendees;
-            });
-        });
-    };
-
-    $scope.book = (booking) => {
-        booking.class_id = $scope.selectedClass.id;
-        DataSvc.book(booking).then((res) => {
-            $scope.messageResponse = res;
-            $timeout(() => {
-                location.reload();
-            }, 1500);
-        });
-    };
-
-}])
-angular.module("ang-app").config(["$routeProvider", function(routeProv) {
-    routeProv.when("/classes", {
-        title: "classes",
-        templateUrl: "classes/classes.html",
-        controller: "classesCtrl"
-    })
-}])
-angular.module('ang-app').controller('contactCtrl', ['$scope', '$http', 'DataSvc', function($scope, $http, DataSvc) {
-    window.contactCtrlScope = $scope
-
-
-
-}])
-angular.module("ang-app").config(["$routeProvider", function(routeProv) {
-    routeProv.when("/contact", {
-        title: "contact",
-        templateUrl: "contact/contact.html",
-        controller: "contactCtrl"
-    })
-}])
-angular.module('ang-app').controller('galleryCtrl', ['$scope', '$http', 'DataSvc', function($scope, $http, DataSvc) {
-    window.galleryCtrlScope = $scope
-
-    DataSvc.getImages().then((images) => {
-        $scope.images = images;
-    });
-
-    $scope.viewImage = (index) => {
-        $scope.index = index;
-    };
-
-}])
-angular.module("ang-app").config(["$routeProvider", function(routeProv) {
-    routeProv.when("/gallery", {
-        title: "gallery",
-        templateUrl: "gallery/gallery.html",
-        controller: "galleryCtrl"
-    })
-}])
 angular.module('ang-app').controller('adminCtrl', ['$scope', '$http', 'DataSvc', '$timeout', function($scope, $http, DataSvc, $timeout) {
     window.adminCtrlScope = $scope;
 
@@ -230,50 +158,76 @@ angular.module("ang-app").config(["$routeProvider", function(routeProv) {
         controller: "adminCtrl"
     })
 }])
-angular.module('ang-app').controller('mainCtrl', ['$scope', '$http', 'DataSvc', '$timeout', function($scope, $http, DataSvc, $timeout) {
-    window.mainCtrlScope = $scope;
+angular.module('ang-app').controller('classesCtrl', ['$scope', '$http', 'DataSvc', '$timeout', function($scope, $http, DataSvc, $timeout) {
+    window.classesCtrlScope = $scope
 
-    $scope.getPosts = () => {
-        DataSvc.getPosts().then((posts) => {
-            $scope.posts = posts;
+    DataSvc.getClasses().then((classes) => {
+        $scope.classes = classes;
+    });
+
+    $scope.getNumber = (number) => {
+        return new Array(number);
+    };
+
+
+    $scope.selectClass = (lesson) => {
+        $scope.selectedClass = lesson;
+        DataSvc.getClassSchedule(lesson.id).then((schedule) => {
+            $scope.schedule = schedule;
+            DataSvc.getClassInfo(lesson.id).then((attendees) => {
+                $scope.attendees = attendees;
+            });
         });
     };
 
-    $scope.getPosts();
-
-
-    $scope.newPost = (name, post) => {
-        DataSvc.addNewPost({
-            name: name,
-            post: post
-        }).then((res) => {
-            $scope.messageResponse = res;
-            $timeout(() => {
-                location.reload();
-            }, 1000)
-        });
-    };
-
-    $scope.showComments = (post) => {
-        $scope.post = post;
-    };
-
-    $scope.newComment = (comment) => {
-        comment.post_id = $scope.post.id;
-        DataSvc.comment(comment).then((res) => {
+    $scope.book = (booking) => {
+        booking.class_id = $scope.selectedClass.id;
+        DataSvc.book(booking).then((res) => {
             $scope.messageResponse = res;
             $timeout(() => {
                 location.reload();
             }, 1500);
-        })
+        });
     };
 
-}]);
+}])
 angular.module("ang-app").config(["$routeProvider", function(routeProv) {
-    routeProv.when("/main", {
-        title: "main",
-        templateUrl: "main/main.html",
-        controller: "mainCtrl"
+    routeProv.when("/classes", {
+        title: "classes",
+        templateUrl: "classes/classes.html",
+        controller: "classesCtrl"
+    })
+}])
+angular.module('ang-app').controller('contactCtrl', ['$scope', '$http', 'DataSvc', function($scope, $http, DataSvc) {
+    window.contactCtrlScope = $scope
+
+
+
+}])
+angular.module("ang-app").config(["$routeProvider", function(routeProv) {
+    routeProv.when("/contact", {
+        title: "contact",
+        templateUrl: "contact/contact.html",
+        controller: "contactCtrl"
+    })
+}])
+angular.module('ang-app').controller('galleryCtrl', ['$scope', '$http', 'DataSvc', function($scope, $http, DataSvc) {
+    window.galleryCtrlScope = $scope
+
+    DataSvc.getImages().then((images) => {
+        $scope.images = images;
+    });
+
+    $scope.viewImage = (index) => {
+        $scope.index = index;
+    };
+
+}])
+angular.module("ang-app").config(["$routeProvider", function(routeProv) {
+    routeProv.when("/gallery", {
+        title: "gallery",
+        templateUrl: "gallery/gallery.html",
+        controller: "galleryCtrl"
     })
 }])
 angular.module('ang-app').controller('locationCtrl', ['$scope', '$http', function($scope, $http) {
@@ -309,6 +263,52 @@ angular.module("ang-app").config(["$routeProvider", function(routeProv) {
         title: "location",
         templateUrl: "location/location.html",
         controller: "locationCtrl"
+    })
+}])
+angular.module('ang-app').controller('mainCtrl', ['$scope', '$http', 'DataSvc', '$timeout', function($scope, $http, DataSvc, $timeout) {
+    window.mainCtrlScope = $scope;
+
+    $scope.getPosts = () => {
+        DataSvc.getPosts().then((posts) => {
+            $scope.posts = posts;
+        });
+    };
+
+    $scope.getPosts();
+
+
+    $scope.newPost = (name, post) => {
+        DataSvc.addNewPost({
+            name: name,
+            post: post
+        }).then((res) => {
+            $scope.messageResponse = res;
+            $timeout(() => {
+                location.reload();
+            }, 1000)
+        });
+    };
+
+    $scope.showComments = (post) => {
+        $scope.selectedPost = post;
+    };
+
+    $scope.newComment = (comment) => {
+        comment.post_id = $scope.selectedPost.id;
+        DataSvc.comment(comment).then((res) => {
+            $scope.messageResponse = res;
+            $timeout(() => {
+                location.reload();
+            }, 1500);
+        })
+    };
+
+}]);
+angular.module("ang-app").config(["$routeProvider", function(routeProv) {
+    routeProv.when("/main", {
+        title: "main",
+        templateUrl: "main/main.html",
+        controller: "mainCtrl"
     })
 }])
 angular.module('ang-app').factory('DataSvc', ['$http', '$q', function($http, $q) {
